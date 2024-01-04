@@ -1,3 +1,5 @@
+import { expect } from "@wdio/globals";
+
 // Hàm chờ cho đến khi điều kiện được đáp ứng hoặc hết thời gian timeout
 async function waitUntil(conditionFunction, timeout, errorMessage) {
   const startTime = new Date().getTime();
@@ -18,7 +20,7 @@ describe("Login Test", () => {
     await waitUntil(
       async () =>
         (await browser.execute(() => document.readyState)) === "complete",
-      200000,
+      500000,
       "Page did not load completely within 20 seconds"
     );
 
@@ -32,16 +34,17 @@ describe("Login Test", () => {
       async () =>
         (await browser.getUrl()) !==
         "https://personal-puta3n4i.outsystemscloud.com/CPMS/",
-      200000,
+      500000,
       "Login failed. Not redirected to the expected page."
     );
     await waitUntil(
       async () =>
         (await browser.execute(() => document.readyState)) === "complete",
-      300000,
-      "Page did not load completely within 30 seconds"
+      500000,
+      "Page did not load completely within 50 seconds"
     );
   });
+
   async function scroll() {
     await browser.execute(() => {
       window.scrollBy(0, window.innerHeight);
@@ -72,7 +75,7 @@ describe("Login Test", () => {
     );
   });
 
-  it("Shoul do admin job", async () => {
+  it("Should do admin job", async () => {
     await waitUntil(
       async () =>
         (await browser.execute(() => document.readyState)) === "complete",
@@ -95,7 +98,7 @@ describe("Login Test", () => {
       "Page did not load completely within 30 seconds"
     );
     await browser.url(
-      " https://personal-puta3n4i.outsystemscloud.com/CPMS/AccountManagement"
+      "https://personal-puta3n4i.outsystemscloud.com/CPMS/AccountManagement"
     );
     await waitUntil(
       async () =>

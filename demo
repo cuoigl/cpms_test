@@ -1,0 +1,30 @@
+BDD
+
+Feature: DEMO: Login & Add new account
+
+Scenario Outline: As a Admin, I can log in
+Given I am on the login page
+And I use credentials dinocpms@gmail.com and dino3720
+When I submit to login
+Then I can see the Landing page
+
+Scenario: As a logged Admin, I can go to the system
+Given I am logged in
+And I am on the Landing page
+When I click go to system
+Then I can see the Admin HomePage
+
+Scenario: As a logged user, I can go to AccountManagement page
+Given I already in my Admin HomePage
+When I click the Go to User Management button
+Then I can see AccountManagement
+
+Scenario: As a logged user, I can add neww account
+Given I am on the AccountManagement page
+And I click to New account button
+Then I can see 2 options
+And I click to Add single user
+Then I see new account table
+And I fill @gmail, Tien and DE0000
+Then I click Create button
+And I can see new account
